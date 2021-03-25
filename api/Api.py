@@ -8,7 +8,7 @@ import config as api_info
 class Api:
     def __init__(self):
         """
-         used to connect to twitter api
+         used for connect to twitter api
         """
         self.__API_KEY: str = api_info.API_KEY
         self.__API_SECRET_KEY: str = api_info.API_SECRET_KEY
@@ -19,3 +19,11 @@ class Api:
     def __auth_oauth1(self):
         return OAuth1(client_key=self.__API_KEY, client_secret=self.__API_SECRET_KEY,
                       resource_owner_key=self.__ACCESS_TOKEN, resource_owner_secret=self.__ACCESS_TOKEN_SECRET)
+
+    def get(self):
+        """
+        make get request and return json result
+        :return:
+        """
+        url: str = 'https://api.twitter.com/1.1/account/verify_credentials.json'
+        print(requests.get(url, auth=self.__auth_oauth1()))

@@ -1,6 +1,10 @@
+from api.Api import Api
+
+
 class App:
     def run(self):
-        print('run')
+        api = Api()
+        api.get()
 
 
 if __name__ == '__main__':
