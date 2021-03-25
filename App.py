@@ -1,3 +1,8 @@
+class App:
+    def run(self):
+        print('run')
+
 
 if __name__ == '__main__':
-    print('run')
+    app = App()
+    app.run()

@@ -1,2 +1,8 @@
-# bwiter
-This is twitter bot to track new tweet from account and send you notif on your computer
+# Bwiter
+This is Twitter bot to track account activity anf get a new tweet from account and send you notify on your computer
+
+# API auth
+You have to fill the api auth info with your own:
+* API key
+* API secret key
+* API bearer token
