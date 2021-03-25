@@ -1,5 +1,7 @@
 import requests
-import config
+
+# change with configUser
+import config as apiInfo
 
 
 class Api:
@@ -7,6 +9,6 @@ class Api:
         """
          used to connect to twitter api
         """
-        self.__api_key: str = config.api_key
-        self.__api_secret_key: str = config.api_secret_key
-        self.__bearer_token: str = config.bearer_token
+        self.__api_key: str = apiInfo.API_KEY
+        self.__api_secret_key: str = apiInfo.API_SECRET_KEY
+        self.__bearer_token: str = apiInfo.BEARER_TOKEN
