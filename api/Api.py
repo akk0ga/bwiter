@@ -17,8 +17,6 @@ class Api:
         self.__BEARER_TOKEN: str = api_info.BEARER_TOKEN
         self.__ACCESS_TOKEN: str = api_info.ACCESS_TOKEN
         self.__ACCESS_TOKEN_SECRET: str = api_info.ACCESS_TOKEN_SECRET
-        self.__REQUEST_LIMIT: int = 900
-        self.__TIME_LIMIT: int = 15
 
     def __auth_oauth1(self) -> OAuth1:
         return OAuth1(client_key=self.__API_KEY, client_secret=self.__API_SECRET_KEY,
@@ -31,21 +29,20 @@ class Api:
         """
         try:
             search: str = input('enter your search: ')
+            while search == '':
+                search: str = input('enter your search: ')
+
             if len(search.split(' ')) > 10:
                 raise Exception('the search is more than 10 keywords please reduce your search')
-            if search == '':
-                raise Exception('the search can\' be empty')
 
-
-            url = f'https://api.twitter.com/1.1/search/tweets.json?q={url_encode.quote(search)}&result_type=popular'
+            # url = f'https://api.twitter.com/1.1/search/tweets.json?q={url_encode.quote(search)}'
+            url = f'https://api.twitter.com/1.1/users/search.json?q={url_encode.quote(search)}&count=3'
             print(url)
 
             req = requests.get(url=url, auth=self.__auth_oauth1())
             res = req.json()
-            if not res['statuses']:
-                return 'no result for this search'
-            else:
-                return res
+            print(res[1]['name'])
+            return res
         except req_error.ConnectionError:
             print('Please check your connection: no connection')
         except req_error.Timeout:
