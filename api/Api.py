@@ -33,11 +33,12 @@ class Api:
         try:
             if mod == 'user':
                 url = f'https://api.twitter.com/1.1/users/search.json?q={query}'
-                req = requests.get(url=url, auth=self.__auth_oauth1())
-                res = req.json()
             else:
-                res = {}
-                
+                return {}
+
+            req = requests.get(url=url, auth=self.__auth_oauth1())
+            res = req.json()
+
             return res
         except req_error.ConnectionError:
             print('Please check your connection: no connection')
