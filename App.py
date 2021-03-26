@@ -1,11 +1,10 @@
-from api.Api import Api
+from twitter.User import User
 
 
 class App:
     def run(self):
-        api = Api()
-        get = api.get()
-        print(get)
+        user = User()
+        print(user.get_users_list())
 
 
 if __name__ == '__main__':

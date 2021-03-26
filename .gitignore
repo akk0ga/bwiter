@@ -1504,3 +1504,5 @@ venv/Lib/site-packages/requests_oauthlib/oauth2_session.py
 api/__pycache__/Api.cpython-39.pyc
 api/__pycache__/Api.cpython-39.pyc
 api/__pycache__/Api.cpython-39.pyc
+api/__pycache__/Api.cpython-39.pyc
+twitter/__pycache__/User.cpython-39.pyc
