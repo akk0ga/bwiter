@@ -23,7 +23,7 @@ class Api:
         return OAuth1(client_key=self.__API_KEY, client_secret=self.__API_SECRET_KEY,
                       resource_owner_key=self.__ACCESS_TOKEN, resource_owner_secret=self.__ACCESS_TOKEN_SECRET)
 
-    def _get(self, mod: str, sub_mod: str, query: str, limit: int = None, page: int = None) -> dict:
+    def _get(self, mod: str, sub_mod: str, query: str = None, param: dict = None) -> dict:
         """
         make get request and return response in json\n
         mod accept: 'tweet' or 'user'\n
@@ -31,22 +31,25 @@ class Api:
         :param mod: str
         :param sub_mod: str
         :param query: str
-        :param limit: str
-        :param page: str
+        :param param: str
         :return:
         """
         try:
+            # check which request execute
             if mod == 'user':
                 if sub_mod == 'list':
                     url = f'https://api.twitter.com/1.1/users/search.json?q={query}&' \
-                          f'count={limit if limit is not None else 20}&page={page if page is not None else 1}'
-                    print(url)
+                          f'count={param["limit"] if param is not None and param["limit"] else 20}&' \
+                          f'page={param["page"] if param is not None and param["page"] else 1}'
                 elif sub_mod == 'single':
-                    url = f'https://api.twitter.com/1.1/users/show.json?'
-                    print(url)
+                    url = f'https://api.twitter.com/1.1/users/show.json?user_id={param["user_id"]}&' \
+                          f'screen_name={param["screen_name"]}'
             else:
                 return {}
 
+            print(url)
+
+            # execute request and return request result
             req = requests.get(url=url, auth=self.__auth_oauth1())
             res = req.json()
             req.close()
