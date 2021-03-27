@@ -1,8 +1,7 @@
-from api.Api import Api
 from twitter.Tweet import Tweet
 
 
-class User(Api, Tweet):
+class User(Tweet):
 
     def get_users_list(self, limit: int = None, page: int = None, is_verified: bool = False) -> dict:
         """
@@ -71,4 +70,4 @@ class User(Api, Tweet):
         return user
 
     def last_tweet(self, screen_name: str) -> dict:
-        return self._get_last()
+        return self._get_last_tweet(screen_name=screen_name)

@@ -11,8 +11,7 @@ import config as api_info
 class Api:
     def __init__(self):
         """
-         used for connect to twitter
-         the rate is 900 request per minute
+         used for connect and make request to twitter api
         """
         self.__API_KEY: str = api_info.API_KEY
         self.__API_SECRET_KEY: str = api_info.API_SECRET_KEY

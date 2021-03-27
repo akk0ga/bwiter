@@ -7,7 +7,7 @@ class App:
         user = User()
         tweet = Tweet()
         # print(user.get_user(user_id='2295631308', screen_name='RBW_MAMAMOO'))
-        print(user.last_tweet(screen_name='RWB_MAMAMOO'))
+        print(user.last_tweet(screen_name='RBW_MAMAMOO'))
 
 
 if __name__ == '__main__':
