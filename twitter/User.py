@@ -46,12 +46,7 @@ class User(Tweet):
         return single user
         :return:
         """
-        param: dict = {
-            'user_id': user_id,
-            'screen_name': screen_name
-        }
-
-        res = self._get(mod='user', sub_mod='single', param=param)
+        res = self._get(mod='user', sub_mod='single', param={'user_id': user_id, 'screen_name': screen_name})
         user = {
             'general': {
                 'id_str': res['id_str'],
@@ -71,4 +66,5 @@ class User(Tweet):
         return user
 
     def last_tweet(self, screen_name: str) -> dict:
-        return self._get_last_tweet(screen_name=screen_name)
+        last_tweet = self._get_last_tweet(screen_name=screen_name)
+        return last_tweet
