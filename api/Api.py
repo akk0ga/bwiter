@@ -23,7 +23,7 @@ class Api:
         return OAuth1(client_key=self.__API_KEY, client_secret=self.__API_SECRET_KEY,
                       resource_owner_key=self.__ACCESS_TOKEN, resource_owner_secret=self.__ACCESS_TOKEN_SECRET)
 
-    def _get(self, mod: str, query: str, limit: int = None) -> dict:
+    def _get(self, mod: str, query: str, limit: int, page: int) -> dict:
         """
         make get request and return response in json,
         mod accept 'tweet' / 'user'
@@ -32,7 +32,8 @@ class Api:
         """
         try:
             if mod == 'user':
-                url = f'https://api.twitter.com/1.1/users/search.json?q={query}&count={limit if limit is not None else 20}'
+                url = f'https://api.twitter.com/1.1/users/search.json?q={query}&' \
+                      f'count={limit if limit is not None else 20}&page={page if page is not None else 20}'
                 print(url)
             else:
                 return {}
