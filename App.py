@@ -1,13 +1,12 @@
 from twitter.User import User
-from twitter.Tweet import Tweet
 
 
 class App:
     def run(self):
         user = User()
-        tweet = Tweet()
-        # print(user.get_user(user_id='2295631308', screen_name='RBW_MAMAMOO'))
-        print(user.last_tweet(screen_name='RBW_MAMAMOO'))
+        print(f'user list {user.get_users_list()}')
+        print(f'single user {user.get_user(user_id="2295631308", screen_name="RBW_MAMAMOO")}')
+        print(f'last tweet {user.last_tweet(screen_name="RBW_MAMAMOO")}')
 
 
 if __name__ == '__main__':

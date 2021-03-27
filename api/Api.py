@@ -35,8 +35,9 @@ class Api:
         :return:
         """
         try:
+            url: str = ''
             # check which request execute
-            if mod == 'user':
+            if mod == 'user' and sub_mod is not None:
                 if sub_mod == 'list':
                     url = f'https://api.twitter.com/1.1/users/search.json?q={query}&' \
                           f'count={param["limit"] if param is not None and param["limit"] else 20}&' \
@@ -45,15 +46,13 @@ class Api:
                     url = f'https://api.twitter.com/1.1/users/show.json?user_id={param["user_id"]}&' \
                           f'screen_name={param["screen_name"]}'
                 else:
-                    raise Exception('Please choose sub mod')
+                    raise Exception('sub_mod is not correct')
             elif mod == 'tweet':
-                if sub_mod == 'single':
-                    url = f'https://api.twitter.com/1.1/search/tweets.json?q=from%3A%40{param["screen_name"]}&' \
-                          f'result_type=recent&count=1'
-                else:
-                    print('please choose sub mode')
+                url = f'https://api.twitter.com/1.1/search/tweets.json?q=from%3A%40{param["screen_name"]}&' \
+                      f'result_type=recent&count=1'
+            else:
+                raise Exception('mod is not correct')
 
-            print(url)
             # execute request and return request result
             req = requests.get(url=url, auth=self.__auth_oauth1())
             res = req.json()
