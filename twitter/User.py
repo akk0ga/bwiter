@@ -6,7 +6,7 @@ class User(Api):
         super().__init__()
         self.__api = Api()
 
-    def get_users_list(self, limit: int = None, page: int = None) -> dict:
+    def get_users_list(self, limit: int = None, page: int = None, is_verified: bool = False) -> dict:
         """
         get lists of user
         :return:
@@ -16,5 +16,20 @@ class User(Api):
         res = self.__api._get(mod='user', query=query, limit=limit, page=page)
 
         for user in range(0, len(res)):
-            user_list[res[user]["id_str"]] = res[user]["name"]
+            if is_verified:
+                if res[user]["verified"]:
+                    user_list[res[user]["id_str"]] = {'name': res[user]["name"],
+                                                      'id_name': res[user]['screen_name'],
+                                                      'desc': res[user]["description"]}
+            else:
+                user_list[res[user]["id_str"]] = {'name': res[user]["name"],
+                                                  'id_name': res[user]['screen_name'],
+                                                  'desc': res[user]["description"]}
+
         return user_list
+
+    def get_user(self):
+        """
+        return single user
+        :return:
+        """
