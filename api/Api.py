@@ -24,9 +24,6 @@ class Api:
         return OAuth1(client_key=self.__API_KEY, client_secret=self.__API_SECRET_KEY,
                       resource_owner_key=self.__ACCESS_TOKEN, resource_owner_secret=self.__ACCESS_TOKEN_SECRET)
 
-    def __auth_oauth2(self) -> OAuth2:
-        return OAuth2()
-
     def _get(self, mod: str, sub_mod: str = None, query: str = None, param: dict = None) -> dict:
         """
         make get request and return response in json\n
@@ -52,12 +49,12 @@ class Api:
                     raise Exception('Please choose sub mod')
             elif mod == 'tweet':
                 if sub_mod == 'single':
-                    url = f'https://api.twitter.com/2/tweets/search/recent?query={query} -H "Authorization: Bearer {self.__BEARER_TOKEN}"'
+                    url = f'https://api.twitter.com/1.1/search/tweets.json?q=from%3A%40{param["screen_name"]}&' \
+                          f'result_type=recent&count=1'
                 else:
                     print('please choose sub mode')
 
             print(url)
-
             # execute request and return request result
             req = requests.get(url=url, auth=self.__auth_oauth1())
             res = req.json()
