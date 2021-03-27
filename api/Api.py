@@ -1,7 +1,6 @@
 import requests
 from requests import exceptions as req_error
 from requests_oauthlib import OAuth1
-from requests_oauthlib import OAuth2
 import urllib.parse as url_encode
 
 # change config with configUser

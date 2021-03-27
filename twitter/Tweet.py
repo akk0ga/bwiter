@@ -9,8 +9,5 @@ class Tweet(Api):
         :param screen_name: str
         :return:
         """
-        param: dict = {
-            'screen_name': screen_name
-        }
-        res = self._get(mod='tweet', sub_mod='single', param=param)
+        res = self._get(mod='tweet', sub_mod='single', param={'screen_name': screen_name})
         return res
