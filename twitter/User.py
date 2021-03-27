@@ -34,6 +34,7 @@ class User(Tweet):
                     user_list[res[user]["id_str"]] = {'name': res[user]["name"],
                                                       'id_name': res[user]['screen_name'],
                                                       'desc': res[user]["description"]}
+
             else:
                 user_list[res[user]["id_str"]] = {'name': res[user]["name"],
                                                   'id_name': res[user]['screen_name'],

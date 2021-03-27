@@ -15,7 +15,6 @@ class Api:
         """
         self.__API_KEY: str = api_info.API_KEY
         self.__API_SECRET_KEY: str = api_info.API_SECRET_KEY
-        self.__BEARER_TOKEN: str = api_info.BEARER_TOKEN
         self.__ACCESS_TOKEN: str = api_info.ACCESS_TOKEN
         self.__ACCESS_TOKEN_SECRET: str = api_info.ACCESS_TOKEN_SECRET
 
@@ -35,21 +34,24 @@ class Api:
         :return:
         """
         try:
-            url: str = ''
             # check which request execute
             if mod == 'user' and sub_mod is not None:
                 if sub_mod == 'list':
                     url = f'https://api.twitter.com/1.1/users/search.json?q={query}&' \
                           f'count={param["limit"] if param is not None and param["limit"] else 20}&' \
                           f'page={param["page"] if param is not None and param["page"] else 1}'
+
                 elif sub_mod == 'single':
                     url = f'https://api.twitter.com/1.1/users/show.json?user_id={param["user_id"]}&' \
                           f'screen_name={param["screen_name"]}'
+
                 else:
                     raise Exception('sub_mod is not correct')
+
             elif mod == 'tweet':
                 url = f'https://api.twitter.com/1.1/search/tweets.json?q=from%3A%40{param["screen_name"]}&' \
                       f'result_type=recent&count=1'
+
             else:
                 raise Exception('mod is not correct')
 
@@ -75,8 +77,6 @@ class Api:
         query: input = input('enter keyword: ')
         print(query)
         while query == '' or len(query.split(' ')) > 10:
-            print(query)
-            print(query.split(' '))
             query = input('Your query must be less than 10 keywords and be not empty: ')
 
         encode_query = url_encode.quote(query)
