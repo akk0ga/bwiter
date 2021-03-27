@@ -2,8 +2,6 @@ from api.Api import Api
 
 
 class User(Api):
-    def __init__(self):
-        super().__init__()
 
     def get_users_list(self, limit: int = None, page: int = None, is_verified: bool = False) -> dict:
         """

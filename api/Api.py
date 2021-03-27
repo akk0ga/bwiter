@@ -1,6 +1,7 @@
 import requests
 from requests import exceptions as req_error
 from requests_oauthlib import OAuth1
+from requests_oauthlib import OAuth2
 import urllib.parse as url_encode
 
 # change config with configUser
@@ -23,7 +24,10 @@ class Api:
         return OAuth1(client_key=self.__API_KEY, client_secret=self.__API_SECRET_KEY,
                       resource_owner_key=self.__ACCESS_TOKEN, resource_owner_secret=self.__ACCESS_TOKEN_SECRET)
 
-    def _get(self, mod: str, sub_mod: str, query: str = None, param: dict = None) -> dict:
+    def __auth_oauth2(self) -> OAuth2:
+        return OAuth2()
+
+    def _get(self, mod: str, sub_mod: str = None, query: str = None, param: dict = None) -> dict:
         """
         make get request and return response in json\n
         mod accept: 'tweet' or 'user'\n
@@ -44,8 +48,13 @@ class Api:
                 elif sub_mod == 'single':
                     url = f'https://api.twitter.com/1.1/users/show.json?user_id={param["user_id"]}&' \
                           f'screen_name={param["screen_name"]}'
-            else:
-                return {}
+                else:
+                    raise Exception('Please choose sub mod')
+            elif mod == 'tweet':
+                if sub_mod == 'single':
+                    url = f'https://api.twitter.com/2/tweets/search/recent?query={query} -H "Authorization: Bearer {self.__BEARER_TOKEN}"'
+                else:
+                    print('please choose sub mode')
 
             print(url)
 
