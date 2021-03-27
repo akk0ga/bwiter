@@ -23,18 +23,27 @@ class Api:
         return OAuth1(client_key=self.__API_KEY, client_secret=self.__API_SECRET_KEY,
                       resource_owner_key=self.__ACCESS_TOKEN, resource_owner_secret=self.__ACCESS_TOKEN_SECRET)
 
-    def _get(self, mod: str, query: str, limit: int = None, page: int = None) -> dict:
+    def _get(self, mod: str, sub_mod: str, query: str, limit: int = None, page: int = None) -> dict:
         """
-        make get request and return response in json,
-        mod accept 'tweet' / 'user'
+        make get request and return response in json\n
+        mod accept: 'tweet' or 'user'\n
+        sub-mod accept: 'single' or 'list\n
         :param mod: str
+        :param sub_mod: str
+        :param query: str
+        :param limit: str
+        :param page: str
         :return:
         """
         try:
             if mod == 'user':
-                url = f'https://api.twitter.com/1.1/users/search.json?q={query}&' \
-                      f'count={limit if limit is not None else 20}&page={page if page is not None else 1}'
-                print(url)
+                if sub_mod == 'list':
+                    url = f'https://api.twitter.com/1.1/users/search.json?q={query}&' \
+                          f'count={limit if limit is not None else 20}&page={page if page is not None else 1}'
+                    print(url)
+                elif sub_mod == 'single':
+                    url = f'https://api.twitter.com/1.1/users/show.json?'
+                    print(url)
             else:
                 return {}
 
