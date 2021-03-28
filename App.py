@@ -2,7 +2,6 @@ from twitter.User import User
 from api.Api import Api
 from notification.Notify import Notify
 from threading import Timer
-import time
 
 
 class App:
