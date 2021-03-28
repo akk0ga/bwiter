@@ -12,13 +12,12 @@ class App:
     def __search_new_tweet(self):
         print('new tweet')
         print(self.__user.last_tweet(screen_name="_dieuoff"))
-        Timer(4, self.__search_new_tweet).start()
+        Timer(60, self.__search_new_tweet).start()
 
     def run(self):
         print('bot is running...')
         time.sleep(0.5)
         self.__search_new_tweet()
-
     # print(user.get_users_list())
     # print(f'single user {user.get_user(user_id="2295631308", screen_name="RBW_MAMAMOO")}')
 
