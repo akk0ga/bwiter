@@ -1,6 +1,4 @@
-<div style="margin: auto">
-    <img src="misc/logo.png" alt="bwiter logo" style="width: 20px"/>
-</div>
+<img src="misc/logo.png" alt="drawing" width="20"/>
 
 # Bwiter
 This is a desktop app using Twitter bot to get las tweet from user and send notification on your desktop
