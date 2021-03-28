@@ -18,8 +18,6 @@ class App:
         notify = Notify()
         notify.bot_status()
         self.__search_new_tweet()
-        while True:
-            print('yes')
 
 
 if __name__ == '__main__':

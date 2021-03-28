@@ -2,9 +2,7 @@ import requests
 from requests import exceptions as req_error
 from requests_oauthlib import OAuth1
 import urllib.parse as url_encode
-
-# change config with configUser
-import config as api_info
+import yaml
 
 
 class Api:
@@ -12,10 +10,14 @@ class Api:
         """
          used for connect and make request to twitter api
         """
-        self.__API_KEY: str = api_info.API_KEY
-        self.__API_SECRET_KEY: str = api_info.API_SECRET_KEY
-        self.__ACCESS_TOKEN: str = api_info.ACCESS_TOKEN
-        self.__ACCESS_TOKEN_SECRET: str = api_info.ACCESS_TOKEN_SECRET
+        # load config file
+        yml_file = open('config.yml', 'r')
+        config = yaml.load(yml_file, Loader=yaml.FullLoader)
+        self.__API_KEY: str = config.get('API_KEY')
+        self.__API_SECRET_KEY: str = config.get('API_SECRET_KEY')
+        self.__ACCESS_TOKEN: str = config.get('ACCESS_TOKEN')
+        self.__ACCESS_TOKEN_SECRET: str = config.get('ACCESS_TOKEN_SECRET')
+        yml_file.close()
 
     def __auth_oauth1(self) -> OAuth1:
         return OAuth1(client_key=self.__API_KEY, client_secret=self.__API_SECRET_KEY,
