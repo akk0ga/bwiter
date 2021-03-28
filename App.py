@@ -18,10 +18,9 @@ class App:
     def run(self):
         notify = Notify()
         notify.bot_status()
-        time.sleep(0.5)
         self.__search_new_tweet()
-    # print(user.get_users_list())
-    # print(f'single user {user.get_user(user_id="2295631308", screen_name="RBW_MAMAMOO")}')
+        while True:
+            print('yes')
 
 
 if __name__ == '__main__':

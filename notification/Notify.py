@@ -20,6 +20,3 @@ class Notify:
     def bot_status(self):
         title = f'bot is running...'
         self.__notify.show_toast(title=title, msg=' ', icon_path='misc/logo.ico')
-
-
-Notify().bot_status()
