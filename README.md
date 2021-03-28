@@ -1,5 +1,5 @@
 <div style="margin: auto">
-    <img src="misc/logo.png" alt="bwiter logo" style="margin: auto"/>
+    <img src="misc/logo.png" alt="bwiter logo" style="width: 20px"/>
 </div>
 
 # Bwiter
