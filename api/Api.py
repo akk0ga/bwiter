@@ -68,6 +68,13 @@ class Api:
         except req_error.HTTPError:
             print(f'An HTTP error occurred')
 
+    def get_rate_limit(self):
+        url = 'https://api.twitter.com/1.1/application/rate_limit_status.json'
+        req = requests.get(url=url, auth=self.__auth_oauth1())
+        res = req.json()
+        req.close()
+        return res
+
     def _input_query(self) -> str:
         """
         input to get the get keyword
