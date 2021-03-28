@@ -1,5 +1,5 @@
 # Bwiter
-This is a desktop app using Twitter bot to track account activity anf get a new tweet from account and send you notify on your computer
+This is a desktop app using Twitter bot to get las tweet from user and send notification on your desktop
 
 ## API Info
 ### API used
