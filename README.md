@@ -18,3 +18,9 @@ You have to fill the api auth info with your own for the oauth1:
 * API secret key
 * Access token
 * Access token secret
+
+## Dependencies:
+- pyyaml
+- requests
+- requests_oauthlib
+- win10toast
