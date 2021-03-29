@@ -15,10 +15,12 @@ class Bot:
         search new tweet each x second
         :return:
         """
-        self.__notify.bot_status('run')
+        if not self.__run:
+            self.display_status_run()
         print('search...')
         print(self.__user.last_tweet())
         Timer(self.__refresh_time, self.search_tweet).start()
-    
-    def display_status(self):
-        self.__notify.bot_status('run' if not self.__run else 'stop')
+
+    def display_status_run(self):
+        self.__notify.bot_status('run')
+        self.__run = True
