@@ -12,7 +12,8 @@ class Bot:
 
     def search_tweet(self):
         """
-        search new tweet each x second
+        launch the bot for searching new tweet each x second on
+        the specified account
         :return:
         """
         if not self.__run:
