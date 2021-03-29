@@ -9,8 +9,8 @@ class Notification:
         self.__desc: str = desc
 
     def tweet(self):
-        title = f'New Tweet from {self.__name}'
-        msg = f'title: {self.__title}\ncontent: {self.__desc}'
+        title: str = f'New Tweet from {self.__name}'
+        msg: str = f'title: {self.__title}\ncontent: {self.__desc}'
         self.__notify.show_toast(title=title, msg=msg, icon_path='misc/logo.ico')
 
     def user(self):
@@ -18,7 +18,7 @@ class Notification:
         notify for user info when changed track account
         :return:
         """
-        title = f'You are now listening tweet from {self.__name}'
+        title: str = f'You are now listening tweet from {self.__name}'
         self.__notify.show_toast(title=title, msg=' ', icon_path='misc/logo.ico')
 
     def bot_status(self, status: str):
@@ -28,7 +28,7 @@ class Notification:
         :param status:
         :return:
         """
-        title = 'bot is running...' if status == 'run' else 'bot stopped'
+        title: str = 'bot is running...' if status == 'run' else 'bot stopped'
         self.__notify.show_toast(title=title, msg=' ', icon_path='misc/logo.ico')
 
     # getter and setter
