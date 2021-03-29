@@ -9,6 +9,10 @@ class Notification:
         self.__desc: str = desc
 
     def tweet(self):
+        """
+        display notif when new tweet is get
+        :return:
+        """
         title: str = f'New Tweet from {self.__name}'
         msg: str = f'title: {self.__title}\ncontent: {self.__desc}'
         self.__notify.show_toast(title=title, msg=msg, icon_path='misc/logo.ico')
