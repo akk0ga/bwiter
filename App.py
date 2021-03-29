@@ -6,6 +6,7 @@ class App:
         self.__bot = Bot()
 
     def run(self):
+        self.__bot.set_user_to_track()
         self.__bot.search_tweet()
 
 

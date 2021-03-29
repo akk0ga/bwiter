@@ -2,9 +2,9 @@ from twitter.Tweet import Tweet
 
 
 class User(Tweet):
-    def __init__(self, screen_name: str):
+    def __init__(self):
         super().__init__()
-        self.__screen_name: str = screen_name
+        self.__screen_name: str
 
     def get_users_list(self, limit: int = None, page: int = None, is_verified: bool = False) -> dict:
         """
