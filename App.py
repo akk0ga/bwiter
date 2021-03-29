@@ -8,15 +8,15 @@ class App:
     def __init__(self):
         self.__user = User()
         self.__api = Api()
+        self.__notify = Notification()
 
     def __search_new_tweet(self):
-        print('new tweet')
+        print('search...')
         print(self.__user.last_tweet(screen_name="_dieuoff"))
         Timer(60, self.__search_new_tweet).start()
 
     def run(self):
-        notify = Notification()
-        notify.bot_status()
+        self.__notify.bot_status()
         self.__search_new_tweet()
 
 

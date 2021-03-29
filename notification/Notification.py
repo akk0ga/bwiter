@@ -1,9 +1,9 @@
-from win10toast import ToastNotifier as Notif
+from win10toast import ToastNotifier as Notify
 
 
 class Notification:
     def __init__(self, name: str = 'username', title: str = 'tweet title', desc: str = 'tweet text'):
-        self.__notify = Notif()
+        self.__notify = Notify()
         self.__name = name
         self.__title = title
         self.__desc: str = desc
@@ -14,11 +14,21 @@ class Notification:
         self.__notify.show_toast(title=title, msg=msg, icon_path='misc/logo.ico')
 
     def user(self):
+        """
+        notify for user info when changed track account
+        :return:
+        """
         title = f'You are now listening tweet from {self.__name}'
         self.__notify.show_toast(title=title, msg=' ', icon_path='misc/logo.ico')
 
-    def bot_status(self):
-        title = f'bot is running...'
+    def bot_status(self, status: str):
+        """
+        notify if the bot is running or not, status accepted:\n
+        run or stop
+        :param status:
+        :return:
+        """
+        title = 'bot is running...' if status == 'run' else 'bot stopped'
         self.__notify.show_toast(title=title, msg=' ', icon_path='misc/logo.ico')
 
     # getter and setter
