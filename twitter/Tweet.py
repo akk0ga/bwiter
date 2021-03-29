@@ -25,25 +25,15 @@ class Tweet(Api):
         req: dict = self._get(mod='tweet', param={'screen_name': screen_name})
         req_screen_name = req['statuses'][0]['user']['screen_name']
 
-        # open json on read
-        file = open('last_tweet.json', 'r')
-        data: dict = json.load(file)
-        file.close()
         if user_exist(req_screen_name):
-            if int(data[req_screen_name]['tweet_id']) == req['statuses'][0]['id']:
+            # open json on read
+            file = open('last_tweet.json', 'r')
+            data: dict = json.load(file)
+            file.close()
+            
+            # check if tweet is new
+            if int(data[req_screen_name]['tweet_id']) < req['statuses'][0]['id']:
                 data[req_screen_name] = {
-                    'tweet_id': req['statuses'][0]['id_str'],
-                    'created_at': req['statuses'][0]['created_at'],
-                    'text': req['statuses'][0]['text'],
-                    'user_id_str': req['statuses'][0]['user']['id_str'],
-                    'name': req['statuses'][0]['user']['name'],
-                    'screen_name': 'la normalement c\'est bon',
-                }
-                file = open('last_tweet.json', 'w')
-                json.dump(data, file)
-                file.close()
-        else:
-            data = req_screen_name: {
                     'tweet_id': req['statuses'][0]['id_str'],
                     'created_at': req['statuses'][0]['created_at'],
                     'text': req['statuses'][0]['text'],
@@ -51,7 +41,20 @@ class Tweet(Api):
                     'name': req['statuses'][0]['user']['name'],
                     'screen_name': req['statuses'][0]['user']['screen_name'],
                 }
-
-            file = open('last_tweet.json', 'a')
-            json.dump(data, file)
-            file.close()
+                file = open('last_tweet.json', 'w')
+                json.dump(data, file)
+                file.close()
+        else:
+            new_data: dict = {req_screen_name: {
+                'tweet_id': req['statuses'][0]['id_str'],
+                'created_at': req['statuses'][0]['created_at'],
+                'text': req['statuses'][0]['text'],
+                'user_id_str': req['statuses'][0]['user']['id_str'],
+                'name': req['statuses'][0]['user']['name'],
+                'screen_name': req['statuses'][0]['user']['screen_name']
+            }}
+            with open('last_tweet.json', 'r+') as file:
+                data = json.load(file)
+                data.update(new_data)
+                file.seek(0)
+                json.dump(data, file)
