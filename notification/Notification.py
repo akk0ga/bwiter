@@ -4,8 +4,8 @@ from win10toast import ToastNotifier as Notify
 class Notification:
     def __init__(self, name: str = 'username', title: str = 'tweet title', desc: str = 'tweet text'):
         self.__notify = Notify()
-        self.__name = name
-        self.__title = title
+        self.__name: str = name
+        self.__title: str = title
         self.__desc: str = desc
 
     def tweet(self):

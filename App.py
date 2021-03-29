@@ -16,7 +16,7 @@ class App:
         Timer(60, self.__search_new_tweet).start()
 
     def run(self):
-        self.__notify.bot_status()
+        self.__notify.bot_status('run')
         self.__search_new_tweet()
 
 
