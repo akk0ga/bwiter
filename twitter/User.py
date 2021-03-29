@@ -75,6 +75,11 @@ class User(Tweet):
         else:
             return f'The tweet from {last_tweet["name"]} is already up to date'
     
+    """
+    ============================
+    getter setter
+    ============================
+    """
     def set_screen_name(self, new_screen_name: str):
         self.__screen_name = new_screen_name
 
