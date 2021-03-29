@@ -13,9 +13,9 @@ class Tweet(Api):
         req: dict = self._get(mod='tweet', param={'screen_name': screen_name})
 
         # check if new tweet
-        data = json.load(open('twitter/last_tweet.json', 'r'))
+        data = json.load(open('last_tweet.json', 'r'))
         if int(data['tweet_id']) < req['statuses'][0]['id']:
-            # crate json object
+            # create json object
             res: dict = {
                 'tweet_id': req['statuses'][0]['id_str'],
                 'created_at': req['statuses'][0]['created_at'],
