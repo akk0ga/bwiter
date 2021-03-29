@@ -2,6 +2,9 @@ from twitter.Tweet import Tweet
 
 
 class User(Tweet):
+    def __init__(self, screen_name: str):
+        super().__init__()
+        self.__screen_name: str = screen_name
 
     def get_users_list(self, limit: int = None, page: int = None, is_verified: bool = False) -> dict:
         """
@@ -65,6 +68,17 @@ class User(Tweet):
         }
         return user
 
-    def last_tweet(self, screen_name: str) -> dict:
-        last_tweet = self._get_last_tweet(screen_name=screen_name)
-        return last_tweet
+    def last_tweet(self) -> str:
+        last_tweet = self._get_last_tweet(screen_name=self.__screen_name)
+        if last_tweet['status']:
+            return f'New tweet from {last_tweet["name"]}'
+        else:
+            return f'The tweet from {last_tweet["name"]} is already up to date'
+    
+    def set_screen_name(self, new_screen_name: str):
+        self.__screen_name = new_screen_name
+
+    def get_screen_name(self):
+        return self.__screen_name
+
+    screen_name: property = property(fget=get_screen_name, fset=set_screen_name)

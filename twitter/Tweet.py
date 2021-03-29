@@ -45,9 +45,15 @@ class Tweet(Api):
                 file = open('last_tweet.json', 'w')
                 json.dump(data, file)
                 file.close()
-                return res
+                return {
+                    "status": True,
+                    "name": res['name']
+                }
 
-            return {"not update": "tweet is up to date"}
+            return {
+                    "status": False,
+                    "name": res['name']
+                }
         else:
             new_data: dict = {req_screen_name: res}
             with open('last_tweet.json', 'r+') as file:
@@ -56,4 +62,7 @@ class Tweet(Api):
                 file.seek(0)
                 json.dump(data, file)
                 file.close()
-            return new_data
+            return {
+                    "status": True,
+                    "name": res['name']
+                }
