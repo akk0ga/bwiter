@@ -1,6 +1,6 @@
 from twitter.User import User
 from api.Api import Api
-from notification.Notify import Notify
+from notification.Notification import Notification
 from threading import Timer
 
 
@@ -15,7 +15,7 @@ class App:
         Timer(60, self.__search_new_tweet).start()
 
     def run(self):
-        notify = Notify()
+        notify = Notification()
         notify.bot_status()
         self.__search_new_tweet()
 
