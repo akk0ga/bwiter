@@ -16,11 +16,15 @@ class Bot:
         :return:
         """
         if not self.__run:
-            self.display_status_run()
+            self.status_run()
         print('search...')
         print(self.__user.last_tweet())
         Timer(self.__refresh_time, self.search_tweet).start()
 
-    def display_status_run(self):
+    def status_run(self):
         self.__notify.bot_status('run')
         self.__run = True
+
+    def status_stop(self):
+        self.__notify.bot_status('stop')
+        self.__run = False
