@@ -2,7 +2,7 @@ from twitter.User import User
 from api.Api import Api
 from notification.Notification import Notification
 from threading import Timer
-
+import json
 
 class App:
     def __init__(self):
