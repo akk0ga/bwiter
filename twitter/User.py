@@ -74,7 +74,7 @@ class User(Tweet):
             return f'New tweet from {last_tweet["name"]}'
         else:
             return f'The tweet from {last_tweet["name"]} is already up to date'
-    
+
     """
     ============================
     getter setter

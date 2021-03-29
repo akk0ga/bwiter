@@ -10,10 +10,13 @@ class App:
         self.__api = Api()
         self.__notify = Notification()
 
-    def __search_new_tweet(self):
-        print('search...')
-        print(self.__user.last_tweet())
-        Timer(60, self.__search_new_tweet).start()
+    def __search_new_tweet(self, refresh_time: int = 30):
+        if refresh_time >= 1:
+            print('search...')
+            print(self.__user.last_tweet())
+            Timer(refresh_time, self.__search_new_tweet).start()
+        else:
+            raise Exception('you can\'t have less than 30 second (api rate limit u know)')
 
     def run(self):
         self.__notify.bot_status('run')
