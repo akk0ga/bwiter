@@ -24,38 +24,30 @@ class Tweet(Api):
 
         req: dict = self._get(mod='tweet', param={'screen_name': screen_name})
         req_screen_name = req['statuses'][0]['user']['screen_name']
-
+        res: dict = {
+            'tweet_id': req['statuses'][0]['id_str'],
+            'created_at': req['statuses'][0]['created_at'],
+            'text': req['statuses'][0]['text'],
+            'user_id_str': req['statuses'][0]['user']['id_str'],
+            'name': req['statuses'][0]['user']['name'],
+            'screen_name': req['statuses'][0]['user']['screen_name'],
+        }
+        
         if user_exist(req_screen_name):
             # open json on read
             file = open('last_tweet.json', 'r')
             data: dict = json.load(file)
             file.close()
-
             # check if tweet is new
             if int(data[req_screen_name]['tweet_id']) < req['statuses'][0]['id']:
-                res: dict = {
-                    'tweet_id': req['statuses'][0]['id_str'],
-                    'created_at': req['statuses'][0]['created_at'],
-                    'text': req['statuses'][0]['text'],
-                    'user_id_str': req['statuses'][0]['user']['id_str'],
-                    'name': req['statuses'][0]['user']['name'],
-                    'screen_name': req['statuses'][0]['user']['screen_name'],
-                }
                 data[req_screen_name] = res
                 file = open('last_tweet.json', 'w')
                 json.dump(data, file)
                 file.close()
                 return res
-            return {}
+            return {"not update": "tweet is up to date"}
         else:
-            new_data: dict = {req_screen_name: {
-                'tweet_id': req['statuses'][0]['id_str'],
-                'created_at': req['statuses'][0]['created_at'],
-                'text': req['statuses'][0]['text'],
-                'user_id_str': req['statuses'][0]['user']['id_str'],
-                'name': req['statuses'][0]['user']['name'],
-                'screen_name': req['statuses'][0]['user']['screen_name']
-            }}
+            new_data: dict = {req_screen_name: res}
             with open('last_tweet.json', 'r+') as file:
                 data = json.load(file)
                 data.update(new_data)
