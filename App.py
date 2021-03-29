@@ -12,7 +12,7 @@ class App:
 
     def __search_new_tweet(self):
         print('search...')
-        print(self.__user.last_tweet(screen_name="_dieuoff"))
+        print(self.__user.last_tweet(screen_name="AstolfoToga"))
         Timer(60, self.__search_new_tweet).start()
 
     def run(self):
