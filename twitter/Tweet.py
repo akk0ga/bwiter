@@ -32,12 +32,13 @@ class Tweet(Api):
             'name': req['statuses'][0]['user']['name'],
             'screen_name': req['statuses'][0]['user']['screen_name'],
         }
-        
+
         if user_exist(req_screen_name):
             # open json on read
             file = open('last_tweet.json', 'r')
             data: dict = json.load(file)
             file.close()
+
             # check if tweet is new
             if int(data[req_screen_name]['tweet_id']) < req['statuses'][0]['id']:
                 data[req_screen_name] = res
@@ -45,6 +46,7 @@ class Tweet(Api):
                 json.dump(data, file)
                 file.close()
                 return res
+
             return {"not update": "tweet is up to date"}
         else:
             new_data: dict = {req_screen_name: res}
