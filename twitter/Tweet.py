@@ -4,7 +4,7 @@ import json
 
 class Tweet(Api):
 
-    def _get_last_tweet(self, screen_name: str):
+    def _get_last_tweet(self, screen_name: str) -> dict:
         """
         get las tweet for the specified user
         :param screen_name: str
@@ -30,10 +30,10 @@ class Tweet(Api):
             file = open('last_tweet.json', 'r')
             data: dict = json.load(file)
             file.close()
-            
+
             # check if tweet is new
             if int(data[req_screen_name]['tweet_id']) < req['statuses'][0]['id']:
-                data[req_screen_name] = {
+                res: dict = {
                     'tweet_id': req['statuses'][0]['id_str'],
                     'created_at': req['statuses'][0]['created_at'],
                     'text': req['statuses'][0]['text'],
@@ -41,9 +41,12 @@ class Tweet(Api):
                     'name': req['statuses'][0]['user']['name'],
                     'screen_name': req['statuses'][0]['user']['screen_name'],
                 }
+                data[req_screen_name] = res
                 file = open('last_tweet.json', 'w')
                 json.dump(data, file)
                 file.close()
+                return res
+            return {}
         else:
             new_data: dict = {req_screen_name: {
                 'tweet_id': req['statuses'][0]['id_str'],
@@ -58,3 +61,5 @@ class Tweet(Api):
                 data.update(new_data)
                 file.seek(0)
                 json.dump(data, file)
+                file.close()
+            return new_data
