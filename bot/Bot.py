@@ -5,13 +5,16 @@ from threading import Timer
 
 
 class Bot:
-    __users: Users = Users()
+    __user: User
+    __refresh_time: int
+    __run: bool
+    __users: Users = Users
+    __notify: Notification = Notification()
 
-    def __init__(self, refresh_time: int = 30):
-        self.__notify: Notification = Notification()
-        self.__user: User = User('_dieuoff')
-        self.__refresh_time: int = refresh_time if refresh_time >= 30 else 30
-        self.__run: bool = False
+    def __init__(self, account_track: str, refresh_time: int = 30):
+        self.__user = User(account_track)
+        self.__refresh_time = refresh_time if refresh_time >= 30 else 30
+        self.__run = False
 
     def search_tweet(self):
         """
@@ -48,10 +51,11 @@ class Bot:
         :return:
         """
         name: input = input('who i have to track: ')
-        while name == '':
-            name: input = input('who i have to track: ')
-        self.__notify.user(name=name)
-        self.__user.screen_name = name
+        if name != '':
+            self.__notify.user(name=name)
+            self.__user.screen_name = name
+        else:
+            print('change user cancel')
 
     def save_tweet(self):
         pass

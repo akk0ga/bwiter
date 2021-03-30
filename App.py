@@ -3,10 +3,9 @@ from bot.Bot import Bot
 
 class App:
     def __init__(self):
-        self.__bot = Bot()
+        self.__bot = Bot('_dieuoff')
 
     def run(self):
-        self.__bot.set_user_to_track()
         self.__bot.search_tweet()
 
 

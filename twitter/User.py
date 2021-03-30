@@ -8,7 +8,7 @@ class User(Tweet):
         """
         This class is used to get info from single specified user
         """
-        self.__screen_name: str = screen_name
+        self.__screen_name = screen_name
 
     def get_user(self, user_id: str, screen_name: str) -> dict:
         """
