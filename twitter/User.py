@@ -68,12 +68,20 @@ class User(Tweet):
         }
         return user
 
-    def last_tweet(self) -> str:
+    def last_tweet(self) -> dict:
         last_tweet = self._get_last_tweet(screen_name=self.__screen_name)
         if last_tweet['status']:
-            return f'New tweet from {last_tweet["name"]}'
+            return {
+                'new': True,
+                'name': last_tweet['name'],
+                'desc': last_tweet['text'],
+                'message': f'New tweet from {last_tweet["name"]}'
+            }
         else:
-            return f'The tweet from {last_tweet["name"]} is already up to date'
+            return{
+                'new': False,
+                'message': f'The tweet from {last_tweet["name"]} is already up to date'
+            }
 
     """
     ============================

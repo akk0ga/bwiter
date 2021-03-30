@@ -19,7 +19,9 @@ class Bot:
         if not self.__run:
             self.status_run()
         print('search...')
-        print(self.__user.last_tweet())
+        tweet: dict = self.__user.last_tweet()
+        if tweet['new']:
+            self.__notify.tweet(name=tweet['name'], title=tweet['title'], desc=tweet['desc'])
         Timer(self.__refresh_time, self.search_tweet).start()
 
     def status_run(self):
