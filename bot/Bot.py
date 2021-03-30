@@ -16,12 +16,19 @@ class Bot:
         the specified account
         :return:
         """
+        # check if bot is not running to display notification run
         if not self.__run:
             self.status_run()
+
         print('search...')
         tweet: dict = self.__user.last_tweet()
+
+        # check if tweet is new to display notification
         if tweet['new']:
-            self.__notify.tweet(name=tweet['name'], title=tweet['title'], desc=tweet['desc'])
+            print('new tweet found')
+            self.__notify.tweet(name=tweet['name'], desc=tweet['desc'])
+        else:
+            print('nothing new')
         Timer(self.__refresh_time, self.search_tweet).start()
 
     def status_run(self):

@@ -5,13 +5,13 @@ class Notification:
     def __init__(self):
         self.__notify = Notify()
 
-    def tweet(self, name: str, title: str, desc: str):
+    def tweet(self, name: str, desc: str):
         """
         display notif when new tweet is get
         :return:
         """
         notify_title: str = f'New Tweet from {name}'
-        notify_msg: str = f'title: {title}\ncontent: {desc}'
+        notify_msg: str = f'{desc[0:50]}'
         self.__notify.show_toast(title=notify_title, msg=notify_msg, icon_path='misc/logo.ico')
 
     def user(self, name: str):

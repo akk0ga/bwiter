@@ -47,12 +47,12 @@ class Tweet(Api):
                 file.close()
                 return {
                     "status": True,
-                    "name": res['name']
+                    "name": res['name'],
+                    "desc": res['text']
                 }
 
             return {
                     "status": False,
-                    "name": res['name']
                 }
         else:
             new_data: dict = {req_screen_name: res}
@@ -64,5 +64,6 @@ class Tweet(Api):
                 file.close()
             return {
                     "status": True,
-                    "name": res['name']
+                    "name": res['name'],
+                "desc": res['text']
                 }

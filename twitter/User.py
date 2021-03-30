@@ -74,13 +74,11 @@ class User(Tweet):
             return {
                 'new': True,
                 'name': last_tweet['name'],
-                'desc': last_tweet['text'],
-                'message': f'New tweet from {last_tweet["name"]}'
+                'desc': last_tweet['desc'],
             }
         else:
             return{
-                'new': False,
-                'message': f'The tweet from {last_tweet["name"]} is already up to date'
+                'new': False
             }
 
     """

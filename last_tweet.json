@@ -1,18 +1,1 @@
-{
-  "AstolfoToga": {
-    "tweet_id": "1376636256172527625",
-    "created_at": "Mon Mar 29 20:43:54 +0000 2021",
-    "text": "damn that's a new tweet it's super cool",
-    "user_id_str": "1151980149463760896",
-    "name": "astol",
-    "screen_name": "AstolfoToga"
-  },
-  "_dieuoff": {
-    "tweet_id": "1376793672495284224",
-    "created_at": "Tue Mar 30 07:09:25 +0000 2021",
-    "text": "RT @_dieuoff: Vous allez vous habiller comment pour le reconfinement ?",
-    "user_id_str": "771012227147165696",
-    "name": "Dieu",
-    "screen_name": "_dieuoff"
-  }
-}
+{"AstolfoToga": {"tweet_id": "1376802303487934466", "created_at": "Tue Mar 30 07:43:43 +0000 2021", "text": "i'm writing new tweet atm", "user_id_str": "1151980149463760896", "name": "astol", "screen_name": "AstolfoToga"}, "_dieuoff": {"tweet_id": "1376793672495284224", "created_at": "Tue Mar 30 07:09:25 +0000 2021", "text": "RT @_dieuoff: Vous allez vous habiller comment pour le reconfinement ?", "user_id_str": "771012227147165696", "name": "Dieu", "screen_name": "_dieuoff"}}
