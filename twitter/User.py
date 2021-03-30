@@ -3,7 +3,6 @@ from twitter.Tweet import Tweet
 
 class User(Tweet):
     def __init__(self):
-        super().__init__()
         self.__screen_name: str
 
     def get_users_list(self, limit: int = None, page: int = None, is_verified: bool = False) -> dict:
@@ -35,12 +34,12 @@ class User(Tweet):
             if is_verified:
                 if res[user]["verified"]:
                     user_list[res[user]["id_str"]] = {'name': res[user]["name"],
-                                                      'id_name': res[user]['screen_name'],
+                                                      'id_name': res[user]['__screen_name'],
                                                       'desc': res[user]["description"]}
 
             else:
                 user_list[res[user]["id_str"]] = {'name': res[user]["name"],
-                                                  'id_name': res[user]['screen_name'],
+                                                  'id_name': res[user]['__screen_name'],
                                                   'desc': res[user]["description"]}
         return user_list
 
@@ -49,12 +48,12 @@ class User(Tweet):
         return single user
         :return:
         """
-        res = self._get(mod='user', sub_mod='single', param={'user_id': user_id, 'screen_name': screen_name})
+        res = self._get(mod='user', sub_mod='single', param={'user_id': user_id, '__screen_name': screen_name})
         user = {
             'general': {
                 'id_str': res['id_str'],
                 'name': res['name'],
-                'screen_name': res['screen_name'],
+                '__screen_name': res['__screen_name'],
                 'desc': res['description'],
                 'followers': res['followers_count'],
                 'verified': res['verified'],

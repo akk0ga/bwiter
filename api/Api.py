@@ -6,18 +6,14 @@ import yaml
 
 
 class Api:
-    def __init__(self):
-        """
-         used for connect and make request to twitter api
-        """
-        # load config file
-        yml_file = open('config.yml', 'r')
-        config = yaml.load(yml_file, Loader=yaml.FullLoader)
-        yml_file.close()
-        self.__API_KEY: str = config.get('API_KEY')
-        self.__API_SECRET_KEY: str = config.get('API_SECRET_KEY')
-        self.__ACCESS_TOKEN: str = config.get('ACCESS_TOKEN')
-        self.__ACCESS_TOKEN_SECRET: str = config.get('ACCESS_TOKEN_SECRET')
+    # load config file
+    yml_file = open('config.yml', 'r')
+    config = yaml.load(yml_file, Loader=yaml.FullLoader)
+    yml_file.close()
+    __API_KEY: str = config.get('API_KEY')
+    __API_SECRET_KEY: str = config.get('API_SECRET_KEY')
+    __ACCESS_TOKEN: str = config.get('ACCESS_TOKEN')
+    __ACCESS_TOKEN_SECRET: str = config.get('ACCESS_TOKEN_SECRET')
 
     def __auth_oauth1(self) -> OAuth1:
         return OAuth1(client_key=self.__API_KEY, client_secret=self.__API_SECRET_KEY,
@@ -43,12 +39,12 @@ class Api:
                           f'page={param["page"] if param is not None and param["page"] else 1}'
                 elif sub_mod == 'single':
                     url = f'https://api.twitter.com/1.1/users/show.json?user_id={param["user_id"]}&' \
-                          f'screen_name={param["screen_name"]}'
+                          f'__screen_name={param["__screen_name"]}'
 
                 else:
                     raise Exception('sub_mod is not correct')
             elif mod == 'tweet':
-                url = f'https://api.twitter.com/1.1/search/tweets.json?q=from%3A%40{param["screen_name"]}&' \
+                url = f'https://api.twitter.com/1.1/search/tweets.json?q=from%3A%40{param["__screen_name"]}&' \
                       f'result_type=recent&count=1'
             else:
                 raise Exception('please select mod')

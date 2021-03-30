@@ -48,4 +48,4 @@ class Bot:
         while name == '':
             name: input = input('who i have to track: ')
         self.__notify.user(name=name)
-        self.__user.screen_name = name
+        self.__user.__screen_name = name

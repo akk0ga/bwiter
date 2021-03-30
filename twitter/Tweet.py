@@ -22,15 +22,15 @@ class Tweet(Api):
                     return True
             return False
 
-        req: dict = self._get(mod='tweet', param={'screen_name': screen_name})
-        req_screen_name = req['statuses'][0]['user']['screen_name']
+        req: dict = self._get(mod='tweet', param={'__screen_name': screen_name})
+        req_screen_name = req['statuses'][0]['user']['__screen_name']
         res: dict = {
             'tweet_id': req['statuses'][0]['id_str'],
             'created_at': req['statuses'][0]['created_at'],
             'text': req['statuses'][0]['text'],
             'user_id_str': req['statuses'][0]['user']['id_str'],
             'name': req['statuses'][0]['user']['name'],
-            'screen_name': req['statuses'][0]['user']['screen_name'],
+            '__screen_name': req['statuses'][0]['user']['__screen_name'],
         }
 
         if user_exist(req_screen_name):
