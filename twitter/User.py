@@ -2,50 +2,13 @@ from twitter.Tweet import Tweet
 
 
 class User(Tweet):
+    __screen_name: str
 
     def __init__(self, screen_name: str):
         """
         This class is used to get info from single specified user
         """
         self.__screen_name: str = screen_name
-
-    def get_users_list(self, limit: int = None, page: int = None, is_verified: bool = False) -> dict:
-        """
-        get lists of user
-        :param limit: str
-        :param page: str
-        :param is_verified: bool
-        :return:
-        """
-        query = self._input_query()
-        user_list: dict = {}
-        param: dict = {}
-
-        # check if param declared
-        if limit is not None:
-            param['limit'] = limit
-        if page is not None:
-            param['page'] = page
-
-        # call get request with correct param attribution
-        if len(param) != 0:
-            res = self._get(mod='user', sub_mod='list', query=query, param=param)
-        else:
-            res = self._get(mod='user', sub_mod='list', query=query)
-
-        # stock data get
-        for user in range(0, len(res)):
-            if is_verified:
-                if res[user]["verified"]:
-                    user_list[res[user]["id_str"]] = {'name': res[user]["name"],
-                                                      'id_name': res[user]['__screen_name'],
-                                                      'desc': res[user]["description"]}
-
-            else:
-                user_list[res[user]["id_str"]] = {'name': res[user]["name"],
-                                                  'id_name': res[user]['__screen_name'],
-                                                  'desc': res[user]["description"]}
-        return user_list
 
     def get_user(self, user_id: str, screen_name: str) -> dict:
         """
