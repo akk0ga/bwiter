@@ -57,9 +57,6 @@ class Bot:
         else:
             print('change user cancel')
 
-    def save_tweet(self):
-        pass
-
     def users_list(self, limit: int = None, page: int = None, is_verified: bool = False) -> dict:
         """
         return list of users
