@@ -54,7 +54,7 @@ class User(Tweet):
             'general': {
                 'id_str': res['id_str'],
                 'name': res['name'],
-                '@name': res['screen_name'],
+                'screen_name': res['screen_name'],
                 'desc': res['description'],
                 'followers': res['followers_count'],
                 'verified': res['verified'],
@@ -70,6 +70,8 @@ class User(Tweet):
 
     def last_tweet(self) -> dict:
         last_tweet = self._get_last_tweet(screen_name=self.__screen_name)
+
+        # check if the tweet is new
         if last_tweet['status']:
             return {
                 'new': True,

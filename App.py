@@ -9,9 +9,6 @@ class App:
         self.__bot.set_user_to_track()
         self.__bot.search_tweet()
 
-    def stop(self):
-        print('stop')
-
 
 if __name__ == '__main__':
     app = App()
