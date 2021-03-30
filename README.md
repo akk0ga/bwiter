@@ -3,7 +3,7 @@
 </p>
 
 # Bwiter
-This is a desktop app using Twitter bot to get las tweet from user and send notification on your desktop
+This is a desktop app using Twitter bot to get last tweet from user and send notification on your desktop
 
 ## API Info
 ### API used
