@@ -55,6 +55,7 @@ class Tweet(Api):
                     "status": False,
                 }
         else:
+            # add user in json file
             new_data: dict = {req_screen_name: res}
             with open('last_tweet.json', 'r+') as file:
                 data = json.load(file)
@@ -65,5 +66,5 @@ class Tweet(Api):
             return {
                     "status": True,
                     "name": res['name'],
-                "desc": res['text']
+                    "desc": res['text']
                 }

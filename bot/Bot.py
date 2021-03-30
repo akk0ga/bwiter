@@ -47,4 +47,5 @@ class Bot:
         name: input = input('who i have to track: ')
         while name == '':
             name: input = input('who i have to track: ')
+        self.__notify.user(name=name)
         self.__user.screen_name = name

@@ -19,7 +19,7 @@ class Notification:
         notify for user info when changed track account
         :return:
         """
-        title: str = f'You are now listening tweet from {name}'
+        title: str = f'You are now tracking tweet from {name}'
         self.__notify.show_toast(title=title, msg=' ', icon_path='misc/logo.ico')
 
     def bot_status(self, status: str):
