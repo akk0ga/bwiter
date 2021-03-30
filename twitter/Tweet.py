@@ -50,10 +50,10 @@ class Tweet(Api):
                     "name": res['name'],
                     "desc": res['text']
                 }
-
-            return {
-                    "status": False,
-                }
+            else:
+                return {
+                        "status": False,
+                    }
         else:
             # add user in json file
             new_data: dict = {req_screen_name: res}
