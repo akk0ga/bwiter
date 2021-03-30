@@ -1,9 +1,12 @@
 from twitter.User import User
+from twitter.Users import Users
 from notification.Notification import Notification
 from threading import Timer
 
 
 class Bot:
+    __users: Users = Users()
+
     def __init__(self, refresh_time: int = 30):
         self.__notify: Notification = Notification()
         self.__user: User = User()
@@ -52,3 +55,10 @@ class Bot:
 
     def save_tweet(self):
         pass
+    
+    def users_list(self, limit: int = None, page: int = None, is_verified: bool = False) -> dict:
+        """
+        return list of users
+        :return:
+        """
+        return self.__users.get_users_list(limit=limit, page=page, is_verified=is_verified)

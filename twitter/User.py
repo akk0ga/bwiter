@@ -3,6 +3,9 @@ from twitter.Tweet import Tweet
 
 class User(Tweet):
     def __init__(self):
+        """
+        This class is used to get info from single specified user
+        """
         self.__screen_name: str
 
     def get_users_list(self, limit: int = None, page: int = None, is_verified: bool = False) -> dict:
