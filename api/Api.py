@@ -13,11 +13,11 @@ class Api:
         # load config file
         yml_file = open('config.yml', 'r')
         config = yaml.load(yml_file, Loader=yaml.FullLoader)
+        yml_file.close()
         self.__API_KEY: str = config.get('API_KEY')
         self.__API_SECRET_KEY: str = config.get('API_SECRET_KEY')
         self.__ACCESS_TOKEN: str = config.get('ACCESS_TOKEN')
         self.__ACCESS_TOKEN_SECRET: str = config.get('ACCESS_TOKEN_SECRET')
-        yml_file.close()
 
     def __auth_oauth1(self) -> OAuth1:
         return OAuth1(client_key=self.__API_KEY, client_secret=self.__API_SECRET_KEY,
