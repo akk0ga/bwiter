@@ -1,18 +1,18 @@
 {
   "AstolfoToga": {
-    "tweet_id": "1376802303487934466",
-    "created_at": "Tue Mar 30 07:43:43 +0000 2021",
-    "text": "i'm writing new tweet atm",
+    "tweet_id": "1376903009007992836",
+    "created_at": "Tue Mar 30 14:23:53 +0000 2021",
+    "text": "olala this twitter its cool",
     "user_id_str": "1151980149463760896",
     "name": "astol",
-    "screen_name": "AstolfoToga"
+    "__screen_name": "AstolfoToga"
   },
   "_dieuoff": {
-    "tweet_id": "1376793672495284224",
-    "created_at": "Tue Mar 30 07:09:25 +0000 2021",
+    "tweet_id": "1376842786935336961",
+    "created_at": "Tue Mar 30 10:24:35 +0000 2021",
     "text": "RT @_dieuoff: Vous allez vous habiller comment pour le reconfinement ?",
     "user_id_str": "771012227147165696",
     "name": "Dieu",
-    "screen_name": "_dieuoff"
+    "__screen_name": "_dieuoff"
   }
 }

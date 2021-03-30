@@ -44,7 +44,8 @@ class Api:
                 else:
                     raise Exception('sub_mod is not correct')
             elif mod == 'tweet':
-                url = f'https://api.twitter.com/1.1/search/tweets.json?q=from%3A%40{param["__screen_name"]}&' \
+                print(param['screen_name'])
+                url = f'https://api.twitter.com/1.1/search/tweets.json?q=from%3A%40{param["screen_name"]}&' \
                       f'result_type=recent&count=1'
             else:
                 raise Exception('please select mod')

@@ -2,11 +2,12 @@ from twitter.Tweet import Tweet
 
 
 class User(Tweet):
-    def __init__(self):
+
+    def __init__(self, screen_name: str):
         """
         This class is used to get info from single specified user
         """
-        self.__screen_name: str
+        self.__screen_name: str = screen_name
 
     def get_users_list(self, limit: int = None, page: int = None, is_verified: bool = False) -> dict:
         """

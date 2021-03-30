@@ -34,11 +34,11 @@ class Users(Api):
             if is_verified:
                 if res[user]["verified"]:
                     user_list[res[user]["id_str"]] = {'name': res[user]["name"],
-                                                      'id_name': res[user]['__screen_name'],
+                                                      'id_name': res[user]['screen_name'],
                                                       'desc': res[user]["description"]}
 
             else:
                 user_list[res[user]["id_str"]] = {'name': res[user]["name"],
-                                                  'id_name': res[user]['__screen_name'],
+                                                  'id_name': res[user]['screen_name'],
                                                   'desc': res[user]["description"]}
         return user_list

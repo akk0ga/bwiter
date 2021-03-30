@@ -9,7 +9,7 @@ class Bot:
 
     def __init__(self, refresh_time: int = 30):
         self.__notify: Notification = Notification()
-        self.__user: User = User()
+        self.__user: User = User('_dieuoff')
         self.__refresh_time: int = refresh_time if refresh_time >= 30 else 30
         self.__run: bool = False
 
@@ -55,7 +55,7 @@ class Bot:
 
     def save_tweet(self):
         pass
-    
+
     def users_list(self, limit: int = None, page: int = None, is_verified: bool = False) -> dict:
         """
         return list of users
