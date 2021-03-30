@@ -5,6 +5,9 @@
 # Bwiter
 This is a desktop app using Twitter bot to get last tweet from user and send notification on your desktop
 
+#GUI
+To do the gui I used Qt designer from pyqt5
+
 ## API Info
 ### API used
 Twitter API: https://developer.twitter.com/en
@@ -24,3 +27,5 @@ You have to fill the api auth info with your own for the oauth1:
 - requests
 - requests_oauthlib
 - win10toast
+- pyqt5 
+- pyqt5-tools
