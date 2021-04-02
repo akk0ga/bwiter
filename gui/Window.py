@@ -1,19 +1,20 @@
-# importations à faire pour la réalisation d'une interface graphique
-import sys
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout
+from PyQt5.QtWidgets import QWidget, QPushButton, QVBoxLayout
+from bot.Bot import Bot
 
 
 class Window(QWidget):
-    def __init__(self):
+    def __init__(self, account: str):
         QWidget.__init__(self)
+        self.__bot = Bot(account_track=account)
+
         # set Window
         self.setWindowTitle('Bwitter')
         self.resize(1121, 600)
 
         # start bot button
         self.bot_start = QPushButton('Start bot')
-        self.bot_start.clicked.connect(self.test)
+        self.bot_start.clicked.connect(self.__bot.search_tweet)
 
         # create vertical layout
         layout = QVBoxLayout()
@@ -25,15 +26,3 @@ class Window(QWidget):
             print('left')
         if event.button() == Qt.RightButton:
             print('right')
-
-    def test(self):
-        print('bot start')
-
-
-app = QApplication(sys.argv)
-
-# create and resize window
-window = Window()
-window.show()
-# exec app
-app.exec_()

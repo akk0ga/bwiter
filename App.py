@@ -1,15 +1,19 @@
+import sys
 from bot.Bot import Bot
+from PyQt5.QtWidgets import QApplication
 from gui.Window import Window
 
 
-class App:
-    def __init__(self):
-        self.__bot = Bot('RBW_MAMAMOO')
+class App(Window):
+    def __init__(self, account: str):
+        super().__init__(account)
 
     def run(self):
-        Window()
+        self.show()
 
 
 if __name__ == '__main__':
-    app = App()
+    run = QApplication(sys.argv)
+    app = App('AstolfoToga')
     app.run()
+    run.exec_()
