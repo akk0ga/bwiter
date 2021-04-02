@@ -13,6 +13,7 @@ class Window(QWidget):
 
         # start bot button
         self.bot_start = QPushButton('Start bot')
+        self.bot_start.clicked.connect(self.test)
 
         # create vertical layout
         layout = QVBoxLayout()
@@ -24,6 +25,9 @@ class Window(QWidget):
             print('left')
         if event.button() == Qt.RightButton:
             print('right')
+
+    def test(self):
+        print('bot start')
 
 
 app = QApplication(sys.argv)
