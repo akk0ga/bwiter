@@ -1,19 +1,17 @@
 import sys
-from bot.Bot import Bot
 from PyQt5.QtWidgets import QApplication
-from gui.Window import Window
+from bot.Bot import Bot
 
 
-class App(Window):
-    def __init__(self, account: str):
-        super().__init__(account)
+class App:
+    def __init__(self):
+        self.__bot = Bot(account_track='')
 
     def run(self):
-        self.show()
+        self.__bot.set_user_to_track()
+        self.__bot.search_tweet()
 
 
 if __name__ == '__main__':
-    run = QApplication(sys.argv)
-    app = App('AstolfoToga')
+    app = App()
     app.run()
-    run.exec_()
